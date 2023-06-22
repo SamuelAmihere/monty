@@ -41,14 +41,17 @@ void add_dnodeint(stack_t **stack, unsigned int line_number)
 */
 void print_dlistint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
+	stack_t *tmp = NULL;
 	(void)line_number;
 
-	tmp = *stack;
-	while (tmp != NULL)
+	if (*stack != NULL)
 	{
-		printf("%d\n", tmp->n);
-		tmp = tmp->next;
+		tmp = *stack;
+		while (tmp != NULL)
+		{
+			printf("%d\n", tmp->n);
+			tmp = tmp->next;
+		}
 	}
 }
 
