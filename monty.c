@@ -33,20 +33,18 @@ int main(int argc, char *argv[])
 		*line_number += 1;
 		inst = parser(line, line_number, stack_num_ptr);
 		if (inst == NULL)
-			continue;
+		{
+			all_inst[i] = NULL;
+			exit_not_integer(ln, line, all_inst, file, all_nums);
+		}
 		populate_array(all_inst, all_nums, stack_num, inst, i);
 		len = 0;
 		i++;
 	}
 	all_inst[i] = NULL;
-
 	for (j = 0; j < i; j++)
 		handle_instruction(all_inst[j], all_nums[j]);
-
-	free(line);
-	free_stack(head);
-	free_arrays_str(all_inst);
-	free(all_nums);
+	free_all(line, all_inst, all_nums);
 	fclose(file);
 	return (0);
 }
@@ -73,17 +71,8 @@ char *parser(char *line, int *line_number, int *num_ptr)
 
 	if (strcmp(opcode, "push") == 0)
 	{
-		if (arg == NULL)
-		{
-			printf("L%d: usage: push integer\n", *line_number);
-			exit(EXIT_FAILURE);
-		}
-
-		if (is_number(arg) == 0)
-		{
-			printf("L%d: usage: push integer\n", *line_number);
-			exit(EXIT_FAILURE);
-		}
+		if (arg == NULL || is_number(arg) == 0)
+			return (NULL)
 	}
 	*num_ptr = atoi(arg);
 	return (opcode);

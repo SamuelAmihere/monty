@@ -52,3 +52,19 @@ void free_arrays_int(int **array)
 
 	free(array);
 }
+
+/**
+ * free_all - frees everything
+ * @line: line to free
+ * @all_inst: array of instructions to free
+ * @all_nums: array of numbers to free
+ * Return: nothing
+ */
+void free_all(char *line, char **all_inst, int *all_nums)
+{
+	free(line);
+	free_stack(head);
+	if (all_inst != NULL)
+		free_arrays_str(all_inst);
+	free(all_nums);
+}

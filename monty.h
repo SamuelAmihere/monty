@@ -49,20 +49,20 @@ extern stack_t *head;
 /* ============= PROTOYPES =========== */
 /* in_out.c */
 void add_dnodeint(stack_t **stack,
-	unsigned int line_number);
+		unsigned int line_number);
 void print_dlistint(stack_t **stack, unsigned int line_number);
-void print_dlistintend(stack_t **stack, unsigned int line_number);
+void print_dlistint_top(stack_t **stack, unsigned int line_number);
 void handle_instruction(char *inst, int num);
 
 /* monty.c*/
-char *parser(char *line, int *line_number, int *num_ptr);
+char *parser(char *line, int *num_ptr);
 int is_number(char *s);
 int stack_len(stack_t **stack);
 FILE *open_file(char *file);
 
 /* create_arr.c */
 void populate_array(char *all_inst[MAX_INST], int *all_nums,
-int stack_num, char *inst, int i);
+		int stack_num, char *inst, int i);
 int array_len_str(char **array);
 int array_len_int(int *array);
 
@@ -70,6 +70,11 @@ int array_len_int(int *array);
 void free_stack(stack_t *stack);
 void free_arrays_str(char *array[]);
 void free_arrays_int(int **array);
+void free_all(char *line, char **all_inst,
+	int *all_nums);
 
+/* exits.c */
+void exit_not_integer(int line_number, char *line,
+		char **all_inst, FILE *file, int *all_nums);
 
 #endif
