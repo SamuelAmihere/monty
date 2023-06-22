@@ -79,6 +79,7 @@ void exit_not_integer(int line_number, char *line, FILE *file,
 void exit_close_file(FILE *file);
 void exit_arg_err(void);
 void exit_malloc_err(void);
+void exit_pint_err(unsigned int line_number);
 
 /* utils.c*/
 void arg_checker(int argc);

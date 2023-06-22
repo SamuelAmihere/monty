@@ -64,11 +64,7 @@ void print_dlistint_top(stack_t **stack, unsigned int line_number)
 	stack_t *tmp = *stack;
 
 	if (stack == NULL || *stack == NULL)
-	{
-		printf("L%d: can't pint, stack empty\n", line_number);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+		exit_pint_err(line_number);
 	printf("%d\n", tmp->n);
 }
 
