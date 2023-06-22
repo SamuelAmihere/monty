@@ -15,31 +15,30 @@ stack_t *head = NULL;
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *inst, *all_inst[MAX_INST], *line = NULL;
+	char *inst, *line = NULL;
 	size_t len = 0;
-	int *line_number, *stack_num_ptr, *all_nums,
-	    stack_num = 0, ln = 0, i = 0;
+	int *line_number, *stack_num_ptr, stack_num = 0,
+		ln = 0, i = 0;
 
 	line_number = &ln;
 	stack_num_ptr = &stack_num;
 	arg_checker(argc);
 	file = open_file(argv[1]);
-	all_nums = malloc(sizeof(int) * MAX_INST);
-	if (all_nums == NULL)
-		exit_close_file(file);
+
 	while (getline(&line, &len, file) != -1)
 	{
 		*line_number += 1;
 		inst = parser(line, stack_num_ptr);
 		if (inst == NULL)
-			exit_not_integer(ln, line, file);
+			exit_not_integer(ln, line, file, inst);
 
 		handle_instruction(inst, stack_num);
+		free(inst);
 		len = 0;
 		i++;
 	}
-
-	free_all(line, all_inst, all_nums);
+	free(line);
+	free_stack(head);
 	fclose(file);
 	return (0);
 }

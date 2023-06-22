@@ -6,14 +6,17 @@
  * @line_number: line number
  * @line: line to free
  * @file: file to close
+ * @inst: instruction to free
  * Return: nothing
  */
-void exit_not_integer(int line_number, char *line, FILE *file)
+void exit_not_integer(int line_number, char *line, FILE *file,
+	char *inst)
 {
 	printf("L%d: usage: push integer\n", line_number);
 
 	free(line);
-
+	free_stack(head);
+	free(inst);
 	exit_close_file(file);
 }
 
