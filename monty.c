@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	char *inst, *all_inst[MAX_INST], *line = NULL;
 	size_t len = 0;
 	int *line_number, *stack_num_ptr, *all_nums,
-	    stack_num = 0, ln = 0, i = 0, j;
+	    stack_num = 0, ln = 0, i = 0;
 
 	line_number = &ln;
 	stack_num_ptr = &stack_num;
@@ -32,17 +32,13 @@ int main(int argc, char *argv[])
 		*line_number += 1;
 		inst = parser(line, stack_num_ptr);
 		if (inst == NULL)
-		{
-			all_inst[i] = NULL;
-			exit_not_integer(ln, line, all_inst, file, all_nums);
-		}
-		populate_array(all_inst, all_nums, stack_num, inst, i);
+			exit_not_integer(ln, line, file);
+
+		handle_instruction(inst, stack_num);
 		len = 0;
 		i++;
 	}
-	all_inst[i] = NULL;
-	for (j = 0; j < i; j++)
-		handle_instruction(all_inst[j], all_nums[j]);
+
 	free_all(line, all_inst, all_nums);
 	fclose(file);
 	return (0);
