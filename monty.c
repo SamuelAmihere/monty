@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
  * @num_ptr: pointer to number
  * Return: 0 on success, 1 on failure
  */
-char *parser(char *line,int *num_ptr)
+char *parser(char *line, int *num_ptr)
 {
 	char *token, *opcode, *arg;
 
