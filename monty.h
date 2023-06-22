@@ -52,7 +52,7 @@ void add_dnodeint(stack_t **stack,
 		unsigned int line_number);
 void print_dlistint(stack_t **stack, unsigned int line_number);
 void print_dlistint_top(stack_t **stack, unsigned int line_number);
-void handle_instruction(char *inst, int num);
+int handle_instruction(char *inst, int num);
 
 /* monty.c*/
 char *parser(char *line, int *num_ptr);
@@ -78,6 +78,7 @@ void exit_not_integer(int line_number, char *line, FILE *file,
 		char *inst);
 void exit_close_file(FILE *file);
 void exit_arg_err(void);
+void exit_malloc_err(void);
 
 /* utils.c*/
 void arg_checker(int argc);

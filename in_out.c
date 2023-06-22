@@ -14,7 +14,7 @@ void add_dnodeint(stack_t **stack, unsigned int line_number)
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
-		return;
+		exit_malloc_err();
 
 	new->n = line_number;
 
@@ -77,9 +77,9 @@ void print_dlistint_top(stack_t **stack, unsigned int line_number)
 * handle_instruction - handles the instruction
 * @inst: instruction
 * @num: number
-* Return: nothing
+* Return: 1 on success, 0 on failure
 */
-void handle_instruction(char *inst, int num)
+int handle_instruction(char *inst, int num)
 {
 	int i;
 	instruction_t opcodes[] = {
@@ -93,4 +93,6 @@ void handle_instruction(char *inst, int num)
 		if (strcmp(opcodes[i].opcode, inst) == 0)
 			opcodes[i].f(&head, num);
 	}
+
+	return (1);
 }
