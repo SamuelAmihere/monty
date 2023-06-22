@@ -49,8 +49,9 @@ extern stack_t *head;
 /* ============= PROTOYPES =========== */
 /* in_out.c */
 void add_dnodeint(stack_t **stack,
-unsigned int line_number);
+	unsigned int line_number);
 void print_dlistint(stack_t **stack, unsigned int line_number);
+void print_dlistintend(stack_t **stack, unsigned int line_number);
 void handle_instruction(char *inst, int num);
 
 /* monty.c*/
