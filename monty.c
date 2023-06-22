@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	while (getline(&line, &len, file) != -1)
 	{
 		*line_number += 1;
-		inst = parser(line, line_number, stack_num_ptr);
+		inst = parser(line, stack_num_ptr);
 		if (inst == NULL)
 		{
 			all_inst[i] = NULL;
@@ -50,13 +50,12 @@ int main(int argc, char *argv[])
 }
 
 /**
-* parser - parses a line from a file
-* @line: line to parse
-* @line_number: line number
-* @num_ptr: pointer to number
-* Return: 0 on success, 1 on failure
-*/
-char *parser(char *line, int *line_number, int *num_ptr)
+ * parser - parses a line from a file
+ * @line: line to parse
+ * @num_ptr: pointer to number
+ * Return: 0 on success, 1 on failure
+ */
+char *parser(char *line,int *num_ptr)
 {
 	char *token, *opcode, *arg;
 
