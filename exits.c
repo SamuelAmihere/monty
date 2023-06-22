@@ -41,3 +41,14 @@ void exit_arg_err(void)
 	fprintf(stderr, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * exit_malloc_err - exits if malloc fails
+ *
+ * Return: nothing
+ */
+void exit_malloc_err(void)
+{
+	fprintf(stderr, "Error: malloc failed\n");
+	exit(EXIT_FAILURE);
+}
