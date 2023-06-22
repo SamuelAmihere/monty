@@ -30,3 +30,14 @@ void exit_close_file(FILE *file)
 	fclose(file);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * exit_arg_err - exits if argument numnbers not satified
+ *
+ * Return: nothing
+ */
+void exit_arg_err(void)
+{
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
+}

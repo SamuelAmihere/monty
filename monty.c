@@ -22,8 +22,7 @@ int main(int argc, char *argv[])
 
 	line_number = &ln;
 	stack_num_ptr = &stack_num;
-	if (argc != 2)
-		exit(EXIT_FAILURE);
+	arg_checker(argc);
 	file = open_file(argv[1]);
 	all_nums = malloc(sizeof(int) * MAX_INST);
 	if (all_nums == NULL)

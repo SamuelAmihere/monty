@@ -77,5 +77,8 @@ void free_all(char *line, char **all_inst,
 void exit_not_integer(int line_number, char *line,
 		char **all_inst, FILE *file, int *all_nums);
 void exit_close_file(FILE *file);
+void exit_arg_err(void);
 
+/* utils.c*/
+void arg_checker(int argc);
 #endif
