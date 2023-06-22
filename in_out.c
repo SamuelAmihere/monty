@@ -53,18 +53,19 @@ void print_dlistint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * print_dlistintend - prints  node at the top of the stack
+ * print_dlistint_top - prints  node at the top of the stack
  * @stack: pointer to the head node of dlistint_t
  * @line_number: line number
  * Return: Nothing
  */
-void print_dlistintend(stack_t **stack, unsigned int line_number)
+void print_dlistint_top(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't pint, stack empty\n", line_number);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", tmp->n);
@@ -83,10 +84,10 @@ void handle_instruction(char *inst, int num)
 	instruction_t opcodes[] = {
 		{"push", add_dnodeint},
 		{"pall", print_dlistint},
-		{"pint", print_dlistintend},
+		{"pint", print_dlistint_top},
 		{NULL, NULL}};
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < 3; i++)
 	{
 		if (strcmp(opcodes[i].opcode, inst) == 0)
 			opcodes[i].f(&head, num);
