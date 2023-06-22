@@ -66,7 +66,7 @@ char *parser(char *line, int *line_number, int *num_ptr)
 	opcode = token;
 	if (opcode == NULL)
 		return (opcode);
-	if (strcmp(opcode, "pall") == 0)
+	if (strcmp(opcode, "pall") == 0 || strcmp(opcode, "pint") == 0)
 		return (opcode);
 	token = strtok(NULL, " \n\t"); /* Get second token */
 	arg = token;
