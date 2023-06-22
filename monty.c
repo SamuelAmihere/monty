@@ -71,7 +71,7 @@ char *parser(char *line,int *num_ptr)
 	if (strcmp(opcode, "push") == 0)
 	{
 		if (arg == NULL || is_number(arg) == 0)
-			return (NULL)
+			return (NULL);
 	}
 	*num_ptr = atoi(arg);
 	return (opcode);
