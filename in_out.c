@@ -19,15 +19,13 @@ void add_dnodeint(stack_t **stack, unsigned int line_number)
 	new->n = line_number;
 
 	if (!(*stack))
-	{
 		new->prev = NULL;
-		new->next = NULL;
-	} else
+	else
 	{
 		new->prev = (*stack)->prev;
-		new->next = *stack;
 		(*stack)->prev = new;
 	}
+	new->next = *stack;
 	*stack = new;
 }
 
