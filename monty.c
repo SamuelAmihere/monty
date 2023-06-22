@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	file = open_file(argv[1]);
 	all_nums = malloc(sizeof(int) * MAX_INST);
 	if (all_nums == NULL)
-		exit(EXIT_FAILURE);
+		exit_close_file(file);
 	while (getline(&line, &len, file) != -1)
 	{
 		*line_number += 1;

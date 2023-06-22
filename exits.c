@@ -17,7 +17,16 @@ void exit_not_integer(int line_number, char *line,
 
 	free_all(line, all_inst, all_nums);
 
-	fclose(file);
+	exit_close_file(file);
+}
 
+/**
+ * exit_close_file - closes file and exit program
+ * @file: file to close
+ * Return: nothing
+ */
+void exit_close_file(FILE *file)
+{
+	fclose(file);
 	exit(EXIT_FAILURE);
 }
