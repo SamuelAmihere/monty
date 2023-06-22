@@ -9,7 +9,7 @@
 #include <ctype.h>
 
 /* ============== MACROS ==========*/
-#define MAX_INST 100
+#define MAX_INST 1024
 
 /* ============== STRUCTS =========*/
 
