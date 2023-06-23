@@ -62,11 +62,10 @@ void print_dlistint(stack_t **stack, unsigned int line_number)
  */
 void print_dlistint_top(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = *stack;
 
-	if (stack == NULL || *stack == NULL)
+	if (!(*stack))
 		exit_pint_err(line_number);
-	printf("%d\n", tmp->n);
+	printf("%d\n", ((*stack)->n);
 }
 
 
