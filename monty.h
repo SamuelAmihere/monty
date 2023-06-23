@@ -48,7 +48,7 @@ extern stack_t *head;
 
 /* ============= PROTOYPES =========== */
 /* in_out.c */
-void add_dnodeint(stack_t **stack,
+void push_dnodeint(stack_t **stack,
 		unsigned int line_number);
 void print_dlistint(stack_t **stack, unsigned int line_number);
 void print_dlistint_top(stack_t **stack, unsigned int line_number);

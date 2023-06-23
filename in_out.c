@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
-* add_dnodeint - adds a new node at the end of a linked list
+* push_dnodeint - adds a new node at the end of a linked list
 *
 * @stack: starting node
 * @line_number: Integer to be added.
 *
 * Return: Nothing
 */
-void add_dnodeint(stack_t **stack, unsigned int line_number)
+void push_dnodeint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
 
@@ -17,16 +17,17 @@ void add_dnodeint(stack_t **stack, unsigned int line_number)
 		exit_malloc_err();
 
 	new->n = line_number;
-
-	if (!(*stack))
+	new->next = *stack;
+	
+	if (*stack == NULL)
 		new->prev = NULL;
 	else
 	{
 		new->prev = (*stack)->prev;
 		(*stack)->prev = new;
 	}
-	new->next = *stack;
-	*stack = new;
+
+	*stack = new;i
 }
 
 /**
@@ -79,7 +80,7 @@ int handle_instruction(char *inst, int num)
 {
 	int i;
 	instruction_t opcodes[] = {
-		{"push", add_dnodeint},
+		{"push", push_dnodeint},
 		{"pall", print_dlistint},
 		{"pint", print_dlistint_top},
 		{NULL, NULL}};
