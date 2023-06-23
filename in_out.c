@@ -65,7 +65,7 @@ void print_dlistint_top(stack_t **stack, unsigned int line_number)
 
 	if (!(*stack))
 		exit_pint_err(line_number);
-	printf("%d\n", ((*stack)->n);
+	printf("%d\n", (*stack)->n);
 }
 
 
