@@ -82,7 +82,7 @@ void exit_malloc_err(void);
 
 /* exits_op.c */
 void exit_pint_err(unsigned int line_number);
-void exit_inst_err(unsigned int line_number, char *inst);
+void exit_inst_err(unsigned int line_number, char *inst, char *line);
 
 
 /* utils.c*/
