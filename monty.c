@@ -29,6 +29,9 @@ int main(int argc, char *argv[])
 	{
 		*line_number += 1;
 		inst = parser(line, stack_num_ptr);
+
+		if (strcmp(inst, EMPTY_LINE_CODE) == 0)
+			continue;
 		if (inst == NULL)
 			exit_not_integer(ln, line, file, inst);
 
@@ -59,7 +62,7 @@ char *parser(char *line, int *num_ptr)
 	token = strtok(line, " \n\t"); /* Get first token */
 	opcode = token;
 	if (opcode == NULL)
-		return (opcode);
+		return (EMPTY_LINE_CODE);
 	if (strcmp(opcode, "pall") == 0 || strcmp(opcode, "pint") == 0)
 		return (opcode);
 	token = strtok(NULL, " \n\t"); /* Get second token */
@@ -68,7 +71,7 @@ char *parser(char *line, int *num_ptr)
 	if (strcmp(opcode, "push") == 0)
 	{
 		if (arg == NULL || is_number(arg) == 0)
-			return (NULL);
+			return (EMPTY_ARG_CODE);
 	}
 	*num_ptr = atoi(arg);
 	return (opcode);

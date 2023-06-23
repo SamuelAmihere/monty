@@ -10,6 +10,8 @@
 
 /* ============== MACROS ==========*/
 #define MAX_INST 1024
+#define EMPTY_LINE_CODE "el"
+#define EMPTY_ARG_CODE "ea"
 
 /* ============== STRUCTS =========*/
 
