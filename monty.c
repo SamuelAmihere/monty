@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	char *inst, *line = NULL;
 	size_t len = 0;
 	int *line_number, *stack_num_ptr, stack_num = 0,
-		ln = 0, i = 0;
+		ln = 0, i = 0, opt_status = 0;
 
 	line_number = &ln;
 	stack_num_ptr = &stack_num;
@@ -32,7 +32,10 @@ int main(int argc, char *argv[])
 		if (inst == NULL)
 			exit_not_integer(ln, line, file, inst);
 
-		handle_instruction(inst, stack_num);
+		op_status = handle_instruction(inst, stack_num);
+		if (op_status == 0)
+			exit_inst_err(ln, inst);
+
 		free(inst);
 		len = 0;
 		i++;

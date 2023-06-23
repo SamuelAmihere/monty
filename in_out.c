@@ -87,8 +87,12 @@ int handle_instruction(char *inst, int num)
 	for (i = 0; i < 3; i++)
 	{
 		if (strcmp(opcodes[i].opcode, inst) == 0)
+		{
 			opcodes[i].f(&head, num);
+
+			return (1);
+		}
 	}
 
-	return (1);
+	return (0);
 }
