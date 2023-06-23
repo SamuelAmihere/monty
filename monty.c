@@ -30,7 +30,8 @@ int main(int argc, char *argv[])
 		*line_number += 1;
 		inst = parser(line, stack_num_ptr);
 
-		if (strcmp(inst, EMPTY_LINE_CODE) == 0)
+		if (strcmp(inst, EMPTY_LINE_CODE) == 0 &&
+				strcmp(inst, "push") == 0)
 			continue;
 		if (inst == NULL)
 			exit_not_integer(ln, line, file, inst);
