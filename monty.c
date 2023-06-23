@@ -15,7 +15,7 @@ stack_t *head = NULL;
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *inst, *line = NULL;
+	char *line = NULL, *opcode = NULL;
 	size_t len = 0;
 	int *line_number, *stack_num_ptr, stack_num = 0,
 		ln = 0, i = 0, op_status = 0;
@@ -28,22 +28,27 @@ int main(int argc, char *argv[])
 	while (getline(&line, &len, file) != -1)
 	{
 		*line_number += 1;
-		inst = parser(line, stack_num_ptr);
-
-		if (strcmp(inst, EMPTY_LINE_CODE) == 0 &&
-				strcmp(inst, "push") == 0)
+		opcode = strtok(line, " \n\t"); /* Get first token */
+		if (opcode == NULL || opcode[0] == '#')
 			continue;
-		if (inst == NULL)
-			exit_not_integer(ln, line, file, inst);
 
-		op_status = handle_instruction(inst, stack_num);
+		parser(opcode, stack_num_ptr);
+
+		if (stack_num == -1)
+			exit_not_integer(ln, line, file, opcode);
+
+		op_status = handle_instruction(opcode, stack_num);
+
 		if (op_status == 0)
-			exit_inst_err(ln, inst, file);
+			exit_inst_err(ln, opcode, file);
 
-		free(inst);
+		free(opcode);
+
 		len = 0;
 		i++;
+
 	}
+
 	free(line);
 	free_stack(head);
 	fclose(file);
@@ -52,30 +57,26 @@ int main(int argc, char *argv[])
 
 /**
  * parser - parses a line from a file
- * @line: line to parse
+ * @opcode: opcode
  * @num_ptr: pointer to number
  * Return: 0 on success, 1 on failure
  */
-char *parser(char *line, int *num_ptr)
+void parser(char *opcode, int *num_ptr)
 {
-	char *token, *opcode, *arg;
+	char *token, *arg;
 
-	token = strtok(line, " \n\t"); /* Get first token */
-	opcode = token;
-	if (opcode == NULL)
-		return (EMPTY_LINE_CODE);
-	if (strcmp(opcode, "pall") == 0 || strcmp(opcode, "pint") == 0)
-		return (opcode);
 	token = strtok(NULL, " \n\t"); /* Get second token */
 	arg = token;
 
 	if (strcmp(opcode, "push") == 0)
 	{
 		if (arg == NULL || is_number(arg) == 0)
-			return (EMPTY_ARG_CODE);
+		{
+			*num_ptr = -1;
+			return;
+		}
+		*num_ptr = atoi(arg);
 	}
-	*num_ptr = atoi(arg);
-	return (opcode);
 }
 
 /**

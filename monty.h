@@ -9,9 +9,7 @@
 #include <ctype.h>
 
 /* ============== MACROS ==========*/
-#define MAX_INST 1024
-#define EMPTY_LINE_CODE "el"
-#define EMPTY_ARG_CODE "ea"
+
 
 /* ============== STRUCTS =========*/
 
@@ -57,14 +55,12 @@ void print_dlistint_top(stack_t **stack, unsigned int line_number);
 int handle_instruction(char *inst, int num);
 
 /* monty.c*/
-char *parser(char *line, int *num_ptr);
+void parser(char *opcode, int *num_ptr);
 int is_number(char *s);
 int stack_len(stack_t **stack);
 FILE *open_file(char *file);
 
 /* create_arr.c */
-void populate_array(char *all_inst[MAX_INST], int *all_nums,
-		int stack_num, char *inst, int i);
 int array_len_str(char **array);
 int array_len_int(int *array);
 
