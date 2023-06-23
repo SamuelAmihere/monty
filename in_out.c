@@ -100,9 +100,10 @@ int handle_instruction(char *inst, int num)
 		{"pall", print_dlistint},
 		{"pint", print_dlistint_top},
 		{"pop", pop_dlistint_top},
+		{"swap", swap_top_two},
 		{NULL, NULL}};
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 5; i++)
 	{
 		if (strcmp(opcodes[i].opcode, inst) == 0)
 		{

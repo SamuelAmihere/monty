@@ -47,3 +47,17 @@ void exit_pop_err(unsigned int line_number)
 	free_stack(head);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * exit_swap_err - exits if swap fails
+ *
+ * @line_number: line number
+ *
+ * Return: nothing
+ */
+void exit_swap_err(unsigned int line_number)
+{
+	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+	free_stack(head);
+	exit(EXIT_FAILURE);
+}

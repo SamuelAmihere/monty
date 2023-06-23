@@ -55,6 +55,9 @@ void print_dlistint_top(stack_t **stack, unsigned int line_number);
 int handle_instruction(char *inst, int num);
 void pop_dlistint_top(stack_t **stack, unsigned int line_number);
 
+/* operations.c */
+void swap_top_two(stack_t **stack, unsigned int line_number);
+
 /* monty.c*/
 void parser(char *opcode, int *num_ptr);
 int is_number(char *s);
@@ -83,6 +86,7 @@ void exit_malloc_err(void);
 void exit_pint_err(unsigned int line_number);
 void exit_inst_err(unsigned int line_number, char *inst, FILE *file);
 void exit_pop_err(unsigned int line_number);
+void exit_swap_err(unsigned int line_number);
 
 /* utils.c*/
 void arg_checker(int argc);
