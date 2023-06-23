@@ -2,7 +2,7 @@
 
 /**
  * exit_pint_err - exits if pint fails
- * 
+ *
  * @line_number: line number
  *
  * Return: nothing
@@ -15,9 +15,10 @@ void exit_pint_err(unsigned int line_number)
 }
 
 /**
- * exit_pop_err - exits if pop fails
+ * exit_inst_err - exits if pop fails
  *
  * @line_number: line number
+ * @inst: instruction
  *
  * Return: nothing
  */
