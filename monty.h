@@ -53,6 +53,7 @@ void push_dnodeint(stack_t **stack,
 void print_dlistint(stack_t **stack, unsigned int line_number);
 void print_dlistint_top(stack_t **stack, unsigned int line_number);
 int handle_instruction(char *inst, int num);
+void pop_dlistint_top(stack_t **stack, unsigned int line_number);
 
 /* monty.c*/
 void parser(char *opcode, int *num_ptr);
@@ -81,7 +82,7 @@ void exit_malloc_err(void);
 /* exits_op.c */
 void exit_pint_err(unsigned int line_number);
 void exit_inst_err(unsigned int line_number, char *inst, FILE *file);
-
+void exit_pop_err(unsigned int line_number);
 
 /* utils.c*/
 void arg_checker(int argc);

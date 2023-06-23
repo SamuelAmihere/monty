@@ -33,3 +33,17 @@ void exit_inst_err(unsigned int line_number, char *inst, FILE *file)
 	fclose(file);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * exit_pop_err - exits if pop fails
+ *
+ * @line_number: line number
+ *
+ * Return: nothing
+ */
+void exit_pop_err(unsigned int line_number)
+{
+	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+	free_stack(head);
+	exit(EXIT_FAILURE);
+}

@@ -68,6 +68,23 @@ void print_dlistint_top(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->n);
 }
 
+/**
+ * pop_dlistint_top - removes the top element of the stack
+ * @stack: pointer to the head node of dlistint_t
+ * @line_number: line number
+ * Return: Nothing
+ */
+void pop_dlistint_top(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = NULL;
+
+	if (!(*stack))
+		exit_pop_err(line_number);
+
+	tmp = *stack;
+	*stack = (*stack)->next;
+	free(tmp);
+}
 
 /**
 * handle_instruction - handles the instruction
@@ -82,9 +99,10 @@ int handle_instruction(char *inst, int num)
 		{"push", push_dnodeint},
 		{"pall", print_dlistint},
 		{"pint", print_dlistint_top},
+		{"pop", pop_dlistint_top},
 		{NULL, NULL}};
 
-	for (i = 0; i < 3; i++)
+	for (i = 0; i < 4; i++)
 	{
 		if (strcmp(opcodes[i].opcode, inst) == 0)
 		{

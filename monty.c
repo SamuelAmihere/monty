@@ -31,24 +31,22 @@ int main(int argc, char *argv[])
 		opcode = strtok(line, " \n\t"); /* Get first token */
 		if (opcode == NULL || opcode[0] == '#')
 			continue;
-
 		parser(opcode, stack_num_ptr);
-
 		if (stack_num == -1)
 			exit_not_integer(ln, line, file, opcode);
-
-		op_status = handle_instruction(opcode, stack_num);
-
-		if (op_status == 0)
+		if (strcmp(opcode, "push") == 0 && stack_num > 0)
+			op_status = handle_instruction(opcode, stack_num);
+		else if (strcmp(opcode, "push") != 0)
+			op_status = handle_instruction(opcode, (unsigned int)ln);
+		if (op_status == 1)
+			continue;
+		else if (op_status == 0)
 			exit_inst_err(ln, opcode, file);
 
 		free(opcode);
-
 		len = 0;
 		i++;
-
 	}
-
 	free(line);
 	free_stack(head);
 	fclose(file);
