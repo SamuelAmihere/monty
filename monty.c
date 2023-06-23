@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	char *inst, *line = NULL;
 	size_t len = 0;
 	int *line_number, *stack_num_ptr, stack_num = 0,
-		ln = 0, i = 0, opt_status = 0;
+		ln = 0, i = 0, op_status = 0;
 
 	line_number = &ln;
 	stack_num_ptr = &stack_num;
