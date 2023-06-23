@@ -18,7 +18,7 @@ void push_dnodeint(stack_t **stack, unsigned int line_number)
 
 	new->n = line_number;
 	new->next = *stack;
-	
+
 	if (*stack == NULL)
 		new->prev = NULL;
 	else
