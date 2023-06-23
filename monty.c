@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
 		op_status = handle_instruction(inst, stack_num);
 		if (op_status == 0)
-			exit_inst_err(ln, inst, line);
+			exit_inst_err(ln, inst, file);
 
 		free(inst);
 		len = 0;

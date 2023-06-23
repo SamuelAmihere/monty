@@ -19,17 +19,17 @@ void exit_pint_err(unsigned int line_number)
  *
  * @line_number: line number
  * @inst: instruction
- * @line: line
+ * @file: file to close
  *
  * Return: nothing
  */
-void exit_inst_err(unsigned int line_number, char *inst, char *line)
+void exit_inst_err(unsigned int line_number, char *inst, FILE *file)
 {
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, inst);
 	if (inst)
 		free(inst);
-	if (line)
-		free(line);
-	free_stack(head);
+	if (head)
+		free_stack(head);
+	fclose(file);
 	exit(EXIT_FAILURE);
 }
