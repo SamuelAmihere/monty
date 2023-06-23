@@ -102,13 +102,15 @@ int handle_instruction(char *inst, int num)
 		{"pop", pop_dlistint_top},
 		{"swap", swap_top_two},
 		{"add", add_top_two},
+		{"nop", NULL},
 		{NULL, NULL}};
 
-	for (i = 0; i < 6; i++)
+	for (i = 0; i < 7; i++)
 	{
 		if (strcmp(opcodes[i].opcode, inst) == 0)
 		{
-			opcodes[i].f(&head, num);
+			if (opcodes[i].f)
+				opcodes[i].f(&head, num);
 
 			return (1);
 		}
