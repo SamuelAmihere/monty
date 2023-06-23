@@ -61,3 +61,17 @@ void exit_swap_err(unsigned int line_number)
 	free_stack(head);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * exit_add_err - exits if add fails
+ *
+ * @line_number: line number
+ *
+ * Return: nothing
+ */
+void exit_add_err(unsigned int line_number)
+{
+	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+	free_stack(head);
+	exit(EXIT_FAILURE);
+}
