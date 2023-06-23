@@ -103,9 +103,10 @@ int handle_instruction(char *inst, int num)
 		{"swap", swap_top_two},
 		{"add", add_top_two},
 		{"nop", NULL},
+		{"sub", sub_top_two},
 		{NULL, NULL}};
 
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 8; i++)
 	{
 		if (strcmp(opcodes[i].opcode, inst) == 0)
 		{

@@ -58,6 +58,8 @@ void pop_dlistint_top(stack_t **stack, unsigned int line_number);
 /* operations.c */
 void swap_top_two(stack_t **stack, unsigned int line_number);
 void add_top_two(stack_t **stack, unsigned int line_number);
+void sub_top_two(stack_t **stack, unsigned int line_number);
+
 
 /* operations_helpers.c*/
 unsigned int add_values(unsigned int a, unsigned int b);
@@ -92,6 +94,9 @@ void exit_inst_err(unsigned int line_number, char *inst, FILE *file);
 void exit_pop_err(unsigned int line_number);
 void exit_swap_err(unsigned int line_number);
 void exit_add_err(unsigned int line_number);
+
+/* exits_op_1.c */
+void exit_sub_err(unsigned int line_number);
 
 /* utils.c*/
 void arg_checker(int argc);
