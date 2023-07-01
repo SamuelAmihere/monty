@@ -9,14 +9,12 @@
  * @inst: instruction to free
  * Return: nothing
  */
-void exit_not_integer(int line_number, char *line, FILE *file,
-	char *inst)
+void exit_not_integer(int line_number, char *line, FILE *file)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line_number);
 
 	free(line);
 	free_stack(head);
-	free(inst);
 	exit_close_file(file);
 }
 

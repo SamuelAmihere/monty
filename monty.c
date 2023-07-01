@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 			continue;
 		parser(opcode, stack_num_ptr);
 		if (stack_num == -1)
-			exit_not_integer(ln, line, file, opcode);
+			exit_not_integer(ln, line, file);
 		if (strcmp(opcode, "push") == 0 && stack_num > 0)
 			op_status = handle_instruction(opcode, stack_num);
 		else if (strcmp(opcode, "push") != 0)

@@ -82,8 +82,7 @@ void free_all(char *line, char **all_inst,
 	int *all_nums);
 
 /* exits.c */
-void exit_not_integer(int line_number, char *line, FILE *file,
-		char *inst);
+void exit_not_integer(int line_number, char *line, FILE *file);
 void exit_close_file(FILE *file);
 void exit_arg_err(void);
 void exit_malloc_err(void);
