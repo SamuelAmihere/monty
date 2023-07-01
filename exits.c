@@ -1,6 +1,17 @@
 #include "monty.h"
 
 /**
+ * exit_file_open_err - exits with error message if file can't be opened
+ * @file: file to close
+ * Return: nothing
+ */
+void exit_file_open_err(char *file)
+{
+	fprintf(stderr, "Error: Can't open file %s\n", file);
+	exit(EXIT_FAILURE);
+}
+
+/**
  * exit_not_integer - exits with error message if not integer
  * frees everything
  * @line_number: line number

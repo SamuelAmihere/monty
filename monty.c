@@ -25,6 +25,9 @@ int main(int argc, char *argv[])
 	arg_checker(argc);
 	file = open_file(argv[1]);
 
+	if (!file)
+		exit_file_open_err(argv[1]);
+
 	while (getline(&line, &len, file) != -1)
 	{
 		*line_number += 1;
